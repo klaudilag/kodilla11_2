@@ -5,8 +5,8 @@ import java.util.Set;
 
 public final class Library extends Prototype<Library>{
 
-    String name;
-    Set<Book> books = new HashSet<>();
+    private final String name;
+    private Set<Book> books = new HashSet<>();
 
     public Library(final String name) {
         this.name = name;
@@ -28,9 +28,6 @@ public final class Library extends Prototype<Library>{
         return super.clone();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Library deepClone() throws CloneNotSupportedException{
         Library clonedLibrary = super.clone();
@@ -53,4 +50,14 @@ public final class Library extends Prototype<Library>{
     public int hashCode() {
         return Objects.hash(name, books);
     }
+
+    @Override
+    public String toString() {
+        String s = "Board [" + name + "]\n";
+        for (Book list : books) {
+            s = s + books.toString() + "\n";
+        }
+        return s;
+    }
+
 }
